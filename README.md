@@ -27,3 +27,7 @@
 - Redirect : 라우팅이 안되어있는 페이지를 요청하면 홈으로 리다이렉트 해주는 기능
 - Switch : 한 번에 오직 하나의 Route만 렌더해줌
 - withRouter : route에서 주는 props를 받을 수 있다.
+
+## Preview
+
+Deploy it on [Netlify](https://jovial-swartz-7d3fba.netlify.app/#/)
