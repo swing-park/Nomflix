@@ -34,7 +34,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://swing-park.github.io/nomflix",
+  "homepage": "https://jovial-swartz-7d3fba.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
