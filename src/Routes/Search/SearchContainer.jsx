@@ -4,7 +4,7 @@ import { tvAPI, movieAPI } from "@/utils/API";
 
 class SearchContainer extends React.Component {
   state = {
-    moviewResults: null,
+    movieResults: null,
     tvResults: null,
     searchTerm: "",
     error: null,
@@ -13,24 +13,31 @@ class SearchContainer extends React.Component {
 
   componentDidMount() {}
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       this.searchByTerm(searchTerm);
     }
   };
 
+  updateTerm = ({ target: { value } }) => {
+    this.setState({
+      searchTerm: value,
+    });
+  };
+
   searchByTerm = async (term) => {
     this.setState({ loading: true });
     try {
       const {
-        data: { results: moviewResults },
+        data: { results: movieResults },
       } = await movieAPI.search(term);
       const {
         data: { results: tvResults },
       } = await tvAPI.search(term);
       this.setState({
-        moviewResults,
+        movieResults,
         tvResults,
       });
     } catch {
@@ -45,15 +52,12 @@ class SearchContainer extends React.Component {
   };
 
   render() {
-    const { moviewResults, tvResults, searchTerm, error, loading } = this.state;
+    const { movieResults, tvResults, searchTerm, error, loading } = this.state;
     return (
       <SearchPresenter
-        moviewResults={moviewResults}
-        tvResults={tvResults}
-        searchTerm={searchTerm}
-        error={error}
-        loading={loading}
+        {...{ movieResults, tvResults, searchTerm, error, loading }}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
