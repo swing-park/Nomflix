@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
 import Home from "./Home/Home";
 import Search from "./Search/Search";
 import TV from "./TV/TV";
@@ -7,7 +7,7 @@ import Header from "@/Components/Header/Header";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -17,7 +17,7 @@ const Router = () => {
         <Route path="/show/:id" component={Detail} />
         <Redirect from="*" to="/" />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
